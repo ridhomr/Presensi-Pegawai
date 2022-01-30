@@ -1,0 +1,109 @@
+{% extends "beranda/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+          <div data-aos="zoom-out"><br><br><br>
+            <h1>FAQ <span>Diskominfo</span> Kab. Mempawah</h1>
+            <h2 style="font-size: 21px;"></h2>
+            <div class="text-lg-start">
+              <a href="{% url 'login' %}" type="button" class="btn-get-started bg-primary float-left scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <span style="font-style: bold;">Get Started</span>
+            </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+          <img src="{% static 'img/face5.png' %}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+
+<section id="faq" class="faq section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>F.A.Q</h2>
+          <p>PERTANYAAN YANG SERING DIAJUKAN</p>
+        </div>
+
+        <div class="faq-list">
+          <ul>
+            <li data-aos="fade-up">
+              <i class="fa fa-question-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Apa Myface itu? <i class="fa fa-arrow-down icon-show"></i><i class="fa fa-arrow-up icon-close"></i></a>
+              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                <p>
+                  Myface merupakan aplikasi presensi pegawai diskominfo sistem ini digunakan untuk mencatat presensi kehadiran secara rutin Staf pegawai Dinas Komunikasi dan Informatika Kabupaten Mempawah Keamanan atas informasi pribadi Anda penting bagi kami. Kami mengamankan & menjaga informasi yang Anda berikan pada server komputer dalam lingkungan yang terkendali dan aman, terlindungi dari akses, penggunaan, atau pengungkapan yang tidak sah.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="fa fa-question-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Apakah layanan Myface berbayar? <i class="fa fa-arrow-down icon-show"></i><i class="fa fa-arrow-up icon-close"></i></a>
+              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Untuk sekarang layanan myface.com gratis karena kami ingin layanan presensi pegawai dapat diakses oleh semua staf akan tetapi layanan kami dikhususkan untuk pegawai kantor atau instansi pegawai bukan untuk publik.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="200">
+              <i class="fa fa-question-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Bagaimana saya bisa menghubungi administrator myface? <i class="fa fa-arrow-down icon-show"></i><i class="fa fa-arrow-up icon-close"></i></a>
+              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Untuk terhubung dengan team Myface Anda bisa menghubungi kami melalui telp +6289693590756 atau info@diskominfo.com
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="300">
+              <i class="fa fa-question-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Saya ingin bergabung dengan team myface apakah bisa? <i class="fa fa-arrow-down icon-show"></i><i class="fa fa-arrow-up icon-close"></i></a>
+              <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Ya, kami membuka kesempatan bagi Anda yang ingin berkontribusi dalam sistem kami untuk bergabung dengan myface, akan tetapi kami tidak bisa memberikan hak akses penuh karena aplikasi ini hanya dikhususkan untuk staf pegawai kantor maupun instansi
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="400">
+              <i class="fa fa-question-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Bagaimana cara membuat akun staf pegawai? <i class="fa fa-arrow-down icon-show"></i><i class="fa fa-arrow-up icon-close"></i></a>
+              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  anda dapat menghubungi telp +6289693590756 atau info@diskominfo.com untuk mendapatkan informasi lebih lanjut dan beritahu jika terdapat kesalahan pada data.
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </section><!-- End F.A.Q Section -->
+
+{% endblock content %}

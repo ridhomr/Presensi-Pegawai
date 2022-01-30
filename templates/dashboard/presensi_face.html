@@ -1,0 +1,127 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'plugins/datatables/dataTables.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/datatables/jquery.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/datatables/buttons.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/datatables/select.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/sweetalert/sweetalert.css' %}" rel="stylesheet">
+    <link href="{% static 'upload.css' %}" rel="stylesheet">
+    <link href="{% static 'datepicker/switch.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .camera-container {
+            position: relative;
+            width: 620px;
+            height: 340px;
+            margin: 10px auto;
+            margin-right: -150px;
+        }
+
+        .camera-container video, .camera-container canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Presensi
+                <small>Master</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"></a></li>
+                <li class="active"><i class="fa fa-dashboard"></i><a href="{% url 'dashboard' %}">&nbsp;Home</a></li>
+                <li class="active">Face Recognition</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="alert-place">
+
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header">
+
+                            <div class="col-md-8">
+                                
+                                    <div class="box-header">
+                                        <h3 class="box-title">Face Recognition</h3>
+
+                                        <div class="pull-right box-tools">
+
+                                        </div>
+                                    </div>
+                                    <div class="box-body">
+                                        
+                                        <div class="camera-container center-block img-thumbnail">
+                                            <video id="video" width="320" height="240" preload autoplay loop muted></video>
+                                            <canvas id="canvas" width="320" height="240"></canvas>
+                                        </div>
+                                        <div class="btn-group" style="margin-left: -250px;">
+                                            <ol class="switches">
+                                              <li>
+                                                <input type="checkbox" id="1">
+                                                <label for="1">
+                                                <button type="submit" class="btn btn-lg btn-primary">train a face&ensp;<img style="width:20px;height:auto;" src="{% static 'img/face4.png' %}"></button>&ensp;
+                                                <button type="submit" class="btn btn-lg  btn-danger">Capture&ensp;<img style="width:20px;height:auto;" src="{% static 'img/camera3.png' %}"></button>&ensp;&ensp;
+
+                                                    <span></span>
+                                                </label>    
+
+                                              </li>
+
+                                          </ol>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        
+                    <br>
+
+                        <div class="container-fluid">
+                            <div id="alert-box"></div>
+                                <div id="file-box"></div>
+                                <br>
+                            <br>
+                        </div>
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+{% endblock content%}
+
+{% block js %}
+    <script src="{% static 'plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/jquery.dataTables.js' %}" type="text/javascript"></script>
+    <script src="{% static 'plugins/datatables/dataTables.bootstrap.js' %}" type="text/javascript"></script>
+    <script src="{% static 'plugins/datatables/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/dataTables.select.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/buttons.bootstrap.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/buttons.flash.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/buttons.print.min.js' %}"></script>
+    <script src="{% static 'plugins/pdfmake/pdfmake.min.js' %}"></script>
+    <script src="{% static 'plugins/sweetalert/sweetalert.min.js' %}"></script>
+    <script src="{% static 'plugins/pdfmake/vfs_fonts.js' %}"></script>
+    <script src="{% static 'plugins/jszip/jszip.min.js' %}"></script>
+    <script src="{% static 'js/dropdown-helper.js' %}"></script>
+    <script src="{% static 'js/form-helper.js' %}"></script>
+    <script src="{% static 'js/upload.js' %}"></script>
+
+{% endblock %}

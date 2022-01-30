@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Diskominfo  Kab.Mempawah</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" href="{% static 'img/diskominfo.png' %}">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/Ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/AdminLTE.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/iCheck/square/blue.css' %}">
+    <link rel="stylesheet" href="{% static 'css/skins/skin-blue.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/morris.js/morris.css' %}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+    {% block css %}
+
+
+    {% endblock %}
+
+</head>
+<body class="hold-transition skin-deep-purple sidebar-mini fa-c" >
+<div class="wrapper" style="margin-top: auto;">
+    <header class="main-header"  style="background-image: linear-gradient(to right,#fff,#e1e3eb);">
+        <a href=" {% url 'dashboard' %}" class="logo col" style="color: #007bff; font-size: 22px; font-family: Arial black;">
+            <img src="{% static 'img/diskominfo.png' %}" width="27" height="27" class="img-circle" alt="User Image">&nbsp;<b>DISKOMINFO</b>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Menu</span>
+            </a>
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" style="margin-left: 600px;" data-toggle="dropdown">
+                            <img src="{% static 'img/avatar5.png' %}" class="user-image" alt="User Image">
+                            <span class="hidden-xs"  style="font-size: 15px;"><b>Hi {{ user.get_username }}!</b></span>
+                        </a>
+
+
+                        <ul class="dropdown-menu">
+                            <li class="user-header">
+                                <img src="{% static 'img/avatar5.png' %}" class="img-circle" alt="User Image">
+                                <p style="color:#000;" >
+                                    {{ user.get_username }} {{ pegawai.jabatan.nama }}
+                                    <small >Staf Pegawai&nbsp;&nbsp;<img src="{% static 'img/verif.png' %}" style="width:15px;"></small>
+                                </p>
+                            </li>
+                            <li class="user-body">
+                                <div class="row">
+                                    <br>
+                                </div>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="{% url 'profile' %}" class="btn btn-default btn-flat" style="font-size: 18px;"><i class="fa fa-user-circle"></i>&nbsp;Profile</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="{% url 'logout_view' %}" class="btn btn-default btn-flat" style="font-size: 18px;"><i class="fa fa-sign-out"></i>&nbsp;Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+
+<aside class="main-sidebar bg-gray-800 text-white" style="font-size: 7px; background-image: linear-gradient(#1f2937,#151c26); ">
+    
+    <section class="sidebar">
+        <div class="user-panel">
+                <div class="pull-left image"><br><br>
+                    <img src="{% static 'img/light.svg' %}" style="width: 19px; margin-left: 5px;" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                     
+                    <a href="#" style="color: #fff;"><i class="fa fa-circle text-success" style="margin-top: 30px; margin-left: -20px;"></i> Online</a><p>
+                    
+                </div>
+            </div><br><br>
+
+            <ul class="sidebar-menu container" style="font-size: 20px; color: #e0e0e0; margin-left: -16px;" data-widget="tree">
+                
+                <li class="header">PANEL ADMIN</li>
+                <li class="dashboard" ><a href="{% url 'dashboard' %}" style="color:#e0e0e0;">&nbsp;<i class="fa fa-dashboard"></i>&nbsp;&nbsp; <span style="font-family:arial; font-size:15px;">Dashboard</span></a></li>
+
+                <li class="pegawai"><a href="{% url 'pegawai_list' %}" style="color:#e0e0e0;">&nbsp;<i class="fa fa-user-circle"></i>&nbsp;&nbsp; <span style="font-family:arial; font-size:15px;">Pegawai</span></a></li>
+
+                <li class="absen"><a href="{% url 'presensi_face' %}" style="color:#e0e0e0;">&nbsp;<i class="fa fa-video-camera"></i>&nbsp;&nbsp; <span style="font-family:arial; font-size:15px;">Presensi</span></a></li>
+
+                <li class="manual"><a href="{% url 'tampil_presensi' %}" style="color:#e0e0e0;">&nbsp;<i class="fa fa-pencil-square-o"></i>&nbsp;&nbsp; <span style="font-family:arial; font-size:15px;">Presensi Manual</span></a></li>
+
+                <li class="manual"><a href="{% url 'laporan_index' %}" style="color:#e0e0e0;">&nbsp;<i class="fa fa-file-text"></i>&nbsp;&nbsp; <span style="font-family:arial; font-size:15px;">Report</span></a>
+
+                <li class="laporan"><a href="{% url 'uploaded' %}" style="color:#e0e0e0;">&nbsp;<i class="fa fa-upload"></i>&nbsp;&nbsp; <span style="font-family:arial; font-size:15px;">Upload File</span></a></li>
+
+                <li class="laporan"><a href="{% url 'jabatan' %}" style="color:#e0e0e0;">&nbsp;<i class="fa fa-address-card"></i>&nbsp;&nbsp; <span style="font-family:arial; font-size:15px;">Hak Akses</span></a></li>
+
+                <li class="laporan"><a href="{% url 'tampil_golongan' %}" style="color:#e0e0e0;">&nbsp;<i class="fa fa-id-card-o"></i>&nbsp;&nbsp; <span style="font-family:arial; font-size:15px;">Jabatan</span></a></li>
+
+                <li class="laporan"><a href="{% url 'tampil_feedback' %}" style="color:#e0e0e0;">&nbsp;<i class="fa fa-comments-o"></i>&nbsp;&nbsp; <span style="font-family:arial; font-size:15px;">Feedback</span></a></li>
+
+                <li class="laporan"><a href="{% url 'logout_view' %}" style="color:#e0e0e0;">&nbsp;<i class="fa fa-sign-out"></i>&nbsp;&nbsp; <span style="font-family:arial; font-size:15px;">LogOut</span></a></li><p>
+
+            </ul>
+
+    </section>
+            
+
+</aside>
+    
+
+    
+
+    {% block content %}
+
+    {% endblock %}
+
+    <footer class="main-footer" style="font-size: 14px;">
+        <div class="pull-right hidden-xs">
+            <strong>&copy; {% now 'Y' %} <a href="https://diskominfo.kalbarprov.go.id/">Dinas Komunikasi Dan Informatika Kab. Mempawah</a>.</strong>
+            <marquee>Jika Anda kendala, hub: <b>+62896935907</b>, Email: <b>Diskominfo@gmail.com</b> untuk memeriksa apakah ada masalah pada data!!</marquee>
+        </div>
+    </footer>
+</div>
+
+<script src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script>
+<script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<script src="{% static 'plugins/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $('body').find('.{% if active is not None %}{{ active }}{% else %}dashboard{% endif %}').addClass('active');
+    });
+</script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+{% block js %}
+
+{% endblock %}
+<script src="{% static 'js/adminlte.min.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'plugins/datatables/dataTables.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/datatables/jquery.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/datatables/buttons.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/datatables/select.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/sweetalert/sweetalert.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Pegawai
+                <small>Master</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"></a></li>
+                <li class="active"><i class="fa fa-dashboard"></i><a href="{% url 'dashboard' %}">&nbsp;Home</a></li>
+                <li class="active"><a href="{% url 'pegawai_list' %}">&nbsp;Pegawai</a></li>
+                <li class="active">Form Pegawai</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="alert-place">
+
+                    </div>
+                    <div class="box box-primary" >
+                        <div class="box-header">
+                            <h3 class="box-title">Data Pegawai</h3>
+                        </div>
+                    <br>
+						<div class="box-body"  style="font-size: 14px;">
+							<div class="container-fluid col-md-12">
+							<form action="" method="POST">
+								{% csrf_token %}
+								
+								{{ form.nip|as_crispy_field }}
+								<div class="row" >
+									<div class="col-md-12">
+										{{ form.nama|as_crispy_field}}
+									</div>
+									<div class="col-md-12">
+										{{ form.tgl_lahir|as_crispy_field}}
+									</div>
+									<div class="col-md-12">
+										{{ form.alamat|as_crispy_field}}
+									</div>
+									<div class="col-md-6">
+										{{ form.jenis_kelamin|as_crispy_field}}
+									</div>
+									<div class="col-md-6">
+										{{ form.no_hp|as_crispy_field}}
+									</div>
+									<div class="col-md-12">
+										{{ form.jabatan|as_crispy_field}}
+									</div>
+								</div><br>
+								<div class="row">
+									<div class="col-md-6">
+										<a href="{% url 'pegawai_list' %}" class="btn btn-danger btn-lg col-md-12" style="font-size: 16px;">Batal
+                                    		<i class="fa fa-times-circle"></i>
+										</a>
+									</div>
+									<div class="col-md-6">
+										<button type="submit" class="btn btn-space btn-primary btn-lg col-md-12" style="font-size: 16px;">Simpan
+		                                    <i class="fa fa-share-square" aria-hidden="true"></i>
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						</div>
+					</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+{% endblock content%}
+
+{% block js %}
+    <script src="{% static 'plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/jquery.dataTables.js' %}" type="text/javascript"></script>
+    <script src="{% static 'plugins/datatables/dataTables.bootstrap.js' %}" type="text/javascript"></script>
+    <script src="{% static 'plugins/datatables/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/dataTables.select.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/buttons.bootstrap.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/buttons.flash.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'plugins/datatables/buttons.print.min.js' %}"></script>
+    <script src="{% static 'plugins/pdfmake/pdfmake.min.js' %}"></script>
+    <script src="{% static 'plugins/sweetalert/sweetalert.min.js' %}"></script>
+    <script src="{% static 'plugins/pdfmake/vfs_fonts.js' %}"></script>
+    <script src="{% static 'plugins/jszip/jszip.min.js' %}"></script>
+    <script src="{% static 'js/dropdown-helper.js' %}"></script>
+    <script src="{% static 'js/form-helper.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,108 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="row">
+<div class="login-box col-md-4 py-6" style="margin-bottom: 40px;"> 
+    <!-- <div class="login-logo">
+        <h1 align="center" >{{ page_title }}</h1></a><p>
+    </div> -->
+
+    
+    <!-- /.login-logo -->
+    <!-- <p class="text-center">
+            <a href="/" class="d-flex align-items-center justify-content-center">
+                <span><i class="fa fa-arrow-left"></i> Back to homepage</span>
+            </a>
+        </p> -->
+    <div class="login-box-body p-5 bg-white rounded shadow-lg">
+        <!-- <p class="login-box-msg">Enter Your Username And Password!!</p> -->
+        <div class="container-fluid" align="center">
+            <img src="{% static 'img/provinsi.png' %}" style="width: 150px;"><p>
+                <p style="font-size: 24px;">User Acceptance Test Staf :</p>
+                <i>Username</i> : <b>ridho_diskominfo</b>
+                <p><i>Password</i> : <b>diskominfo123</b></p>
+        </div>
+        <div class="row justify-content-center form-bg-image" data-background="{% static 'img/signin.svg' %}">
+
+        <form method="post" action="/login/">
+            {% csrf_token %}
+            <div class="form-group has-feedback">
+                <input type="text" name="username" placeholder="Username" autofocus required class="form-control">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="input-group mb-3">
+                <input type="password" name="password" placeholder="Password" autofocus required class="form-control">
+                <div class="input-group-prepend">
+                    <button class="btn rounded-end btn-primary btn-sm" style="background-color: #000080;" type="button">
+                        <h6 toggle="#password-field" class="fa fa-eye fa-lg show-hide"></h6>
+                    </button>
+                </div>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input text-success" type="checkbox" value="" id="checksaya">
+                <label class="form-check-label" for="checksaya">
+                    Ingat saya
+                </label>
+            </div>
+            {% if messages %}
+                <div class="row" style="margin-bottom: 20px">
+                    <div class="col-md-12">
+                        <ul class="messages alert alert-danger list-unstyled">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                                    {{ message }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="row">
+                <div class="col-xs-8">
+                </div>
+                
+                <div class="col-xs-4">
+
+                    <button type="submit" class="btn fw-bold btn-block btn-lg text-white" style="background-color: #000080; font-size: 16px;"><i class="fa fa-sign-in"></i> Masuk
+                    </button>
+                    <button type="submit" href="/" class="btn fw-bold btn-block btn-lg text-white" style="background-color: #A52A2A; font-size: 14px;"><i class="fa fa-arrow-circle-left"></i><a href="/" style="color: #fff;"> Kembali</a>
+                    </button>
+
+                </div>
+
+            </div>
+            <p>
+            <p align="center">Jika anda belum mempunyai <i>Username</i> dan <i>Password</i> silahkan hubungi Bagian Administrator</p>
+        </form>
+    </div>
+    <div class="lockscreen-footer text-center">
+        <br>© {% now "Y" %} <b><a href="" class="text-black">Diskominfo Kab. Mempawah</a></b><br>
+        All rights reserved
+    </div>
+</div>
+</div>
+
+
+{% endblock content %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <script>
+        $(".show-hide").click(function () {
+ 
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+    </script>

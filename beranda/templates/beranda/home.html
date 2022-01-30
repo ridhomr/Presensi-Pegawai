@@ -1,0 +1,184 @@
+{% extends "beranda/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+          <div data-aos="zoom-out"><br><br><br>
+            <h1 style="font-family:Comic Sans MS">Selamat Datang di myface <span>Diskominfo</span> Kab. Mempawah</h1>
+            <h2 style="font-size: 21px;">Sistem ini digunakan untuk mencatat presensi kehadiran secara rutin Staf pegawai Dinas Komunikasi dan Informatika Kabupaten Mempawah</h2>
+            <div class="text-lg-start">
+              <a href="{% url 'login' %}" type="button" class="btn-get-started bg-primary float-left scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <span style="font-style: bold;">Get Started</span>
+            </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+          <img src="{% static 'img/face5.png' %}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container-fluid">
+
+        <div class="row">
+          
+          <div class="col-md-4" data-aos="fade-right">
+            <img src="{% static 'img/log.svg' %}" class="img-fluid" data-vbtype="video" alt="" data-autoplay="true">
+          </div>
+
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
+            
+            <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
+              <div class="section-title" data-aos="fade-up">
+              <h2>Mengapa memilih myface?</h2>
+            </div>
+              <div class="icon"><i class="fa fa-shield"></i></div>
+
+              <h4 class="title"><a href="">Aman</a></h4>
+              <p class="description">Keamanan atas informasi pribadi Anda penting bagi kami. Kami mengamankan & menjaga informasi yang Anda berikan pada server komputer dalam lingkungan yang terkendali dan aman, terlindungi dari akses, penggunaan, atau pengungkapan yang tidak sah.</p>
+            </div>
+
+            <!-- <div class="icon-box" data-aos="zoom-in" data-aos-delay="200">
+              <div class="icon"><i class="fa fa-user"></i></div>
+              <h4 class="title"><a href="">Friendly</a></h4>
+              <p class="description">Aplikasi yang sangat mudah digunakan dan skema Ui desain yang pas, mudah untuk diakses dapat melakukan presensi dimanapun dan kapanpun anda berada</p>
+            </div> -->
+
+            <div class="icon-box" data-aos="zoom-in" data-aos-delay="300">
+              <div class="icon"><i class="fa fa-code-fork"></i></div>
+              <h4 class="title"><a href="">Fleksibel</a></h4>
+              <p class="description"> dapatkan kemudahan & masukan untuk menghadapi masalah konfirmasi akun staf pegawai agar cepat menyesuaikan</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+
+<section id="details" class="details">
+      <div class="container">
+
+        <div class="row content">
+          <div class="col-md-4 order-1 order-md-2" data-aos="fade-left">
+            <img src="{% static 'img/face6.png' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-8 pt-5 order-2 order-md-1" data-aos="fade-up">
+            <h3>Cara Menggunakan :</h3>
+            <p class="fst-italic">
+              Dapatkan layanan dengan myface melakukan langkah di bawah ini.
+            </p>
+            <ul>
+              <li><i class="bi bi-check"></i> Menggunjungi website <i class="bi">myface.com</i></li>
+              <li><i class="bi bi-check"></i> Daftar terlebih dahulu akun anda melalui administrator</li>
+              <li><i class="bi bi-check"></i> Setelah mendapatkan konfirmasi dari administrator</li>
+              <li><i class="bi bi-check"></i> Anda dapat melakukan presensi</li>
+              <li><i class="bi bi-check"></i> Jumlah counting presensi dapat dilihat di menu dashboard</li>
+              <li><i class="bi bi-check"></i> Anda dapat melakukan upload report ke administrator untuk informasi terbaru</li>
+              <div class="container">
+                <button type="submit" href="{% url 'login' %}" class="btn btn-primary " style="margin-top: 20px;"><b>Yuk Presensi</b></button>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Details Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>kontak</h2>
+          <p>kontak kami</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Lokasi:</h4>
+                <p>Jl. Chandramidi, Tengah, Mempawah Hilir, Pontianak, Kalimantan Barat 78911</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@diskominfo.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Phone:</h4>
+                <p>+1 5589 55488 55s</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
+
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+<br><br><br><br>
+{% endblock content %}

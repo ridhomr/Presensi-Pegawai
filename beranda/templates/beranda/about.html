@@ -1,0 +1,80 @@
+{% extends "beranda/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+          <div data-aos="zoom-out"><br><br><br>
+            <h1>Tentang Kami <span>Diskominfo</span> Kab. Mempawah</h1>
+            <h2 style="font-size: 21px;">Web apps Myface merupakan aplikasi presensi pegawai berbasis web, sistem ini dilengkapi dengan fitur teknologi face recognition atau biasa dikenal dengan biometrik identifikasi pengenal wajah</h2>
+            <div class="text-lg-start">
+              <a href="#about" type="button" class="btn-get-started bg-primary float-left scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <span style="font-style: bold;">Get Started</span>
+            </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+          <img src="{% static 'img/face5.png' %}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+
+<section id="details" class="details">
+      <div class="container">
+
+        <div class="row content">
+          <div class="col-md-4" data-aos="fade-right">
+            <img src="{% static 'img/log.svg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-md-8 pt-5" data-aos="fade-up">
+            <div class="section-title" data-aos="fade-up">
+              <h2>Visi & Misi</h2>
+            </div>
+            <h3>Struktur visi dan misi</h3>
+            <p>Sebelumnya perkenalkan terlebih dahulu. apa itu Myface? Myface adalah aplikasi non profit yang didirikan khusus untuk pegawai diskominfo. Mengapa harus pegawai? untuk mempermudah dalam melakukan presensi digital pada saat kerja work from home. Lalu apa solusi yang Myface tawarkan bagi staf Pegawai? yuk simak dibawah ini</p>
+            <ul>
+              <!-- <h3>Visi</h3> -->
+              <li><i class="bi bi-check"></i> Terwujudnya pelayanan prima yang di dukung teknologi informasi dan  komunikasi</li>
+
+              <!-- <h3>Misi</h3> -->
+              <li><i class="bi bi-check"></i> Meningkatkan kapasitas layanan informasi memperdayakan potensi masyarakat dan kerjasama lembaga komunikasi dan informasi</li>
+              <li><i class="bi bi-check"></i> Mewujudkan  profesionalisme aparatur layanan komunikasi dan informatika yang tinggi di dukung oleh sarana dan prasarana memadai</li>
+              <i class="bi bi-check"></i> Meningkatkan pembinaan, pengawasan dan pengendalian terhadap pengusaha penyelenggara jasa pos dan telekomunikasi</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <br><br><br>
+    <!-- End Details Section -->
+    <!-- End About Section -->
+
+{% endblock content %}

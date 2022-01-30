@@ -1,0 +1,145 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'plugins/datatables/dataTables.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/datatables/jquery.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/datatables/buttons.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/datatables/select.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/sweetalert/sweetalert.css' %}" rel="stylesheet">
+    <link href="{% static 'css/sweetalert.min.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+{% endblock %}
+
+
+{% block content %}
+<div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Pegawai
+                <small>Master</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"></a></li>
+                <li class="active"><i class="fa fa-dashboard"></i><a href="{% url 'dashboard' %}">&nbsp;Home</a></li>
+                <li class="active">Pegawai</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="alert-place">
+
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <h3 class="box-title">Data Jabatan</h3>
+
+                            <div class="pull-right box-tools">
+                                <span data-toggle="tooltip"
+                                      title="Tambah Pegawai"
+                                      data-original-title="Tambah Pegawai">
+                                      <br>
+
+                                </span>
+                            </div>
+                        </div>
+                    <br>
+
+						<div class="box-body" style="font-size: 14px;">
+							<table id="example" class="table table-striped table-bordered" style="width:100%">
+								<thead  class="text-bold">
+									<tr>
+										<td>ID</td>
+										<td>Hak Akses</td>
+
+									</tr>
+								</thead>
+								<tbody>
+									{% for jbt in daftar_jabatan %}
+									<tr>
+                                        <td>{{jbt.id}}</td>
+										<td>{{jbt.nama}}</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Hak Akses</th>
+
+                                    </tr>
+                                </tfoot>
+							</table>
+
+                            
+						</div>
+					</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+{% endblock content %}
+
+{% block js %}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/sweetalert.min.js' %}"></script>
+    <script src="{% static 'plugins/sweetalert/sweetalert.min.js' %}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        {% for msg in messages %}
+            Swal.fire({
+              position: 'center',
+              text: ('{{ msg }}'),
+              icon: 'success',
+              title: 'Data Pegawai Berhasil Di Update',
+              showConfirmButton: false,
+            })
+        {% endfor %}
+    </script>
+
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+
+                buttons: [
+                    { extend: 'copy', className:'btn btn btn-secondary btn-lg btn-rounded', text: '<i class="glyphicon glyphicon-copy" aria-hidden="true">.Copy</i>' },
+                    
+                    { extend: 'print', className:'btn btn-info btn-lg btn-rounded', messageTop:'Informasi dalam tabel ini adalah hak cipta Diskominfo Kab.Mempawah', text: '<i class="glyphicon glyphicon-print" aria-hidden="true">.Print</i>' },
+
+                ]
+            } );
+        } );
+    </script>
+<!--     <script>
+
+        function hapus_pegawai(id){
+            Swal.fire({
+                title: 'Are you sure?',
+                text: ('{{ pwg.id }}'),
+                icon: 'warning',
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                timePicker: 40000,
+            })
+            .then(function(result) {
+                if(result.isConfirmed){
+                    window.location.href = "/dashboard/pegawai/list/"
+                }
+            })
+        }
+    </script> -->
+{% endblock %}

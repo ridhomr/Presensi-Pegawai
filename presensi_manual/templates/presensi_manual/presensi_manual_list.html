@@ -1,0 +1,219 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link href="{% static 'plugins/datatables/dataTables.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/datatables/jquery.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/datatables/buttons.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/datatables/select.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/sweetalert/sweetalert.css' %}" rel="stylesheet">
+    <link href="{% static 'css/sweetalert.min.css' %}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+{% endblock %}
+
+
+{% block content %}
+<div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Pegawai
+                <small>Master</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"></a></li>
+                <li class="active"><i class="fa fa-dashboard"></i><a href="{% url 'dashboard' %}">&nbsp;Home</a></li>
+                <li class="active">Presensi Manual</li>
+            </ol>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="alert-place">
+
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <h3 class="box-title">Data Pegawai</h3>
+                            <div class="form-group has-search input-group rounded">
+                              </div>
+                              <a href="{% url 'tambah_presensi' %}" class="btn btn btn-light darkWaves rounded btn-lg"><img style="width:20px;height:auto;" src="{% static 'img/add_pegawai5.png' %}"> &nbsp;<b>Add Presensi</b>&nbsp; </span></a>
+
+                            <div class="pull-right box-tools">
+                                <span data-toggle="tooltip"
+                                      title="Tambah Pegawai"
+                                      data-original-title="Tambah Pegawai">
+                                    
+                                </span>
+                            </div>
+                        </div>
+                    <br>
+                        <div class="box-body" style="font-size: 14px;">
+                            <table id="example" class="table table-striped table-bordered" style="width:100% ">
+                                <thead>
+                                    <tr>
+                                        <th>NIP</th>
+                                        <th>Status</th>
+                                        <th>Keterangan</th>     
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for prs in daftar_presensi %}
+                                    <tr>
+                                        <td>{{prs.pegawai}}</td>
+                                        <td>
+                                            {% if prs.status == 'hadir' %}
+                                                <span class="badge badge-pill badge-primary">{{prs.status}}</span>
+                                            {% elif prs.status == 'sakit'%}
+                                                <span class="badge badge-pill badge-danger">{{prs.status}}</span>
+                                            {% elif prs.status == 'ijin'%}
+                                                <span class="badge badge-pill badge-success">{{prs.status}}</span>
+                                            {% elif prs.status == 'alpa' %}
+                                                <span class="badge badge-pill badge-warning">{{prs.status}}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{prs.keterangan}}</td>
+                                        
+                                        <td>
+                                            
+
+                                            <a style="border:none;background-color:transparent;">
+                                            <!-- <a href="{% url 'hapus_presensi' prs.id %}" class="connection-item" onclick="archiveFunction()"> <img style="width:20px;height:auto;" src="{% static 'img/delete.png' %}"></a> -->
+
+                                            <form action="{% url 'hapus_presensi' prs.id %}" method="POST">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="prs.id" id="prs.id" value="prs.id">
+                                                <button href="{% url 'hapus_presensi' prs.id %}" class="btn btn-danger btn-lg" name="archive" type="submit" onclick="archiveFunction()">
+                                                    <i class="fa fa-archive"></i>
+                                                        Delete
+                                                </button>
+                                            </form>
+
+                                            <script>
+                                                function archiveFunction() {
+                                                    event.preventDefault(); // prevent form submit
+                                                    var form = event.target.form; // storing the form
+                                                            swal({
+                                                      title: "Apakah anda yakin ingin menghapus?",
+                                                      text: "Tetapi Anda tidak dapat mengambil file ini lagi.",
+                                                      type: "warning",
+                                                      showCancelButton: true,
+                                                      confirmButtonColor: "#DD6B55",
+                                                      confirmButtonText: "Yes, archive it!",
+                                                      cancelButtonText: "No, cancel please!",
+                                                      closeOnConfirm: false,
+                                                      closeOnCancel: false
+                                                    },
+                                                    function(isConfirm){
+                                                      if (isConfirm) {
+                                                        form.submit();          // submitting the form when user press yes
+                                                      } else {
+                                                        swal("Batalkan", "File Presensi Anda aman :)", "error");
+                                                      }
+                                                    });
+                                                    }
+                                            </script>
+
+
+                                        </td>
+                                    </tr>
+                                        
+
+                                    {% endfor %}
+                                </tbody>
+                                <thead class="text-bold">
+                                    <tr>
+                                        <th>NIP</th>
+                                        <th>Status</th>
+                                        <th>Keterangan</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
+
+                            <nav aria-label="Page navigation example">
+                              <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                  <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                  <a class="page-link" href="#">Next</a>
+                                </li>
+                              </ul>
+                            </nav> 
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+{% endblock content %}
+
+{% block js %}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/sweetalert.min.js' %}"></script>
+    <script src="{% static 'plugins/sweetalert/sweetalert.min.js' %}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        {% for msg in messages %}
+            Swal.fire({
+              position: 'center',
+              text: ('{{ msg }}'),
+              icon: 'success',
+              title: 'Presensi Berhasil !!',
+              showConfirmButton: false,
+            })
+        {% endfor %}
+    </script>
+
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+
+                buttons: [
+
+                    { extend: 'pdf', className:'btn btn-danger btn-lg btn-rounded', messageTop:'Informasi dalam tabel ini adalah hak cipta Diskominfo Kab.Mempawah', text: '<i class="glyphicon glyphicon-file" aria-hidden="true">.pdf</i>' },
+
+                    { extend: 'csv', className:'btn btn-success btn-lg btn-rounded', text: '<i class="glyphicon glyphicon-list-alt">.csv</i>'},
+                ]
+            } );
+        } );
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<!--     <script>
+
+        function hapus_pegawai(id){
+            Swal.fire({
+                title: 'Are you sure?',
+                text: ('{{ pwg.id }}'),
+                icon: 'warning',
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                timePicker: 40000,
+            })
+            .then(function(result) {
+                if(result.isConfirmed){
+                    window.location.href = "/dashboard/pegawai/list/"
+                }
+            })
+        }
+    </script> -->
+{% endblock %}
+

@@ -1,0 +1,104 @@
+{% extends "beranda/base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+<html ng-app="calendarDemoApp">
+
+<link rel="stylesheet" href="{% static 'calender/css/calendar.min.css' %}"/>
+<link rel="stylesheet" href="{% static 'calender/css/calendar.css' %}"/>
+<script src="{% static 'calender/js/angular.min.js' %}"></script>
+<script src="{% static 'calender/js/calendar-tpls.js' %}"></script>
+<script src="{% static 'calender/js/calendarDemoCtrl.js' %}"></script>
+
+<section id="hero">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
+          <div data-aos="zoom-out"><br><br><br>
+            <h1>Schedule <span>Diskominfo</span> Kab. Mempawah</h1>
+            <h2 style="font-size: 21px;">Web apps Myface merupakan aplikasi presensi pegawai berbasis web, sistem ini dilengkapi dengan fitur teknologi face recognition atau biasa dikenal dengan biometrik identifikasi pengenal wajah</h2>
+            <div class="text-lg-start">
+              <a href="#about" type="button" class="btn-get-started bg-primary float-left scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <span style="font-style: bold;">Get Started</span>
+            </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="300">
+          <img src="{% static 'img/home.svg' %}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+<div class="container">
+<section class="content" style="margin-top: -140px">
+    <section class="container">
+        <section ng-controller="CalendarDemoCtrl" ng-init="loadEvents()">
+            <div class="alert alert-success" ng-show="event">Acara :{{event.startTime|date:
+                'MMM/dd,yyyy,HH:mm'}} - {{event.endTime|date:'MMM/dd,yyyy,HH:mm'}}, {{event.title}}
+            </div>
+
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary" ng-class="{active:mode==='month'}"
+                            ng-click="changeMode('month')">
+                        Month
+                    </button>
+                    <button type="button" class="btn btn-info" ng-class="{active:mode==='week'}"
+                            ng-click="changeMode('week')">
+                        Week
+                    </button>
+                    <button type="button" class="btn btn-success" ng-class="{active:mode==='day'}"
+                            ng-click="changeMode('day')">
+                        Day
+                    </button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-link" ng-disabled="isToday()"
+                            ng-click="today()">
+                        Today
+                    </button>
+                </div>
+            </div>
+            <div class="well well-sm">
+                <calendar ng-model="currentDate" calendar-mode="mode" event-source="eventSource"
+                          range-changed="reloadSource(startTime, endTime)"
+                          event-selected="onEventSelected(event)"
+                          time-selected="onTimeSelected(selectedTime, events)" step="30"></calendar>
+            </div>
+            <div class="container">
+
+        <div class="row content">
+          <h3>Belum ada karyawan</h3>
+        <p>Pasti nanti kalau sudah ada, infonya akan kelihatan disini</p>
+        </div>
+      </div>
+        </section>
+    </section>
+</section>
+
+</div>
+
+      
+
+</html>
+{% endblock content %}
